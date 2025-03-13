@@ -1,16 +1,40 @@
+/* Global Outfit Font Styles */
+body {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400; /* Regular as default */
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600; /* Semibold for headings */
+}
+
+p {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400; /* Regular for paragraphs */
+}
+
+button {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500; /* Medium for buttons */
+}
+
+/* Existing Styles */
 .App {
   text-align: center;
-  font-family: Arial, sans-serif;
 }
-.App-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
+
+main {
+  margin-top: 20px;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   margin: 10px 0;
 }
