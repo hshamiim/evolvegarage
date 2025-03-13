@@ -1,12 +1,22 @@
 .header {
-    text-align: center;
-    margin-top: 20px;
+    background-color: #282c34; /* Dark background for the header */
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px; /* Add padding to the sides */
   }
   
-  .header h1 {
+  .title-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .title {
     font-family: 'Outfit', sans-serif;
     font-size: 64px;
     font-weight: 600; /* Semibold */
+    margin: 0;
   }
   
   .evolve {
@@ -16,3 +26,46 @@
   .garage {
     color: red;
   }
+  
+  .nav {
+    display: flex;
+  }
+  
+  .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Space between navigation items */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item {
+    margin: 0;
+  }
+  
+  .nav-link {
+    color: white; /* White text for links */
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500; /* Medium weight */
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #61dafb; /* Light blue color on hover */
+  }
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  .title {
+    font-size: 48px; /* Smaller title on mobile */
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
