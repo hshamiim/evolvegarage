@@ -1,13 +1,8 @@
 // i18n.ts
 import {getRequestConfig} from 'next-intl/server';
  
-export default getRequestConfig(async ({locale}) => {
-  // This is the simplest way to satisfy TypeScript.
-  // We're providing a default fallback to 'en' if the locale is undefined.
-  const effectiveLocale = locale || 'en';
-
-  return {
-    locale: effectiveLocale,
-    messages: (await import(`./messages/${effectiveLocale}.json`)).default
-  };
-});
+export default getRequestConfig(async ({locale}) => ({
+  // This locale property was missing from the file in your repository
+  locale, 
+  messages: (await import(`./messages/${locale}.json`)).default
+}));

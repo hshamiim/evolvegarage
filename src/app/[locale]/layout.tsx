@@ -1,7 +1,7 @@
 // src/app/[locale]/layout.tsx
-import './globals.css'; // This is the critical missing line
+import './globals.css'; // This line was missing
 import {NextIntlClientProvider, useMessages} from 'next-intl';
-import type { Metadata } from "next"; // Good practice to include this
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Evolve Garage",
