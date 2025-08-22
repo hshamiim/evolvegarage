@@ -1,3 +1,5 @@
+// File: src/app/[locale]/page.tsx
+
 import {getTranslations} from 'next-intl/server';
 
 export default async function Home() {
