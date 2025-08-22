@@ -1,0 +1,16 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "servicing": "Car Servicing",
+    "repairs": "Car Repairs",
+    "mot": "MOT",
+    "maintenance": "Maintenance",
+    "faq": "FAQ",
+    "signUp": "Sign Up",
+    "login": "Login"
+  },
+  "Homepage": {
+    "welcome": "Welcome to Evolve Garage",
+    "tagline": "Your trusted local experts in Leicester for all vehicle repairs and servicing."
+  }
+}
