@@ -7,10 +7,30 @@
     "maintenance": "Maintenance",
     "faq": "FAQ",
     "signUp": "Sign Up",
-    "login": "Login"
+    "login": "Login",
+    "forum": "Forum"
   },
   "Homepage": {
     "welcome": "Welcome to Evolve Garage",
     "tagline": "Your trusted local experts in Leicester for all vehicle repairs and servicing."
+  },
+  "Footer": {
+    "tagline": "Your trusted local experts in Leicester.",
+    "servicesTitle": "Our Services",
+    "servicing": "Car Servicing",
+    "repairs": "Car Repairs",
+    "mot": "MOT",
+    "companyTitle": "Company",
+    "contact": "Contact Us",
+    "forum": "Forum",
+    "culture": "Our Culture",
+    "supportTitle": "Support",
+    "faq": "Frequently Asked Questions",
+    "feedback": "Have Your Say",
+    "chat": "Live Chat",
+    "copyright": "Copyright © {year} Evolve Garage",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "sitemap": "Sitemap"
   }
 }

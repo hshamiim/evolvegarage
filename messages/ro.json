@@ -3,14 +3,34 @@
     "home": "Acasă",
     "servicing": "Service Auto",
     "repairs": "Reparații Auto",
-    "mot": "ITP",
+    "mot": "MOT",
     "maintenance": "Întreținere",
-    "faq": "FAQ",
+    "faq": "Întrebări Frecvente",
     "signUp": "Înregistrare",
-    "login": "Autentificare"
+    "login": "Autentificare",
+    "forum": "Forum"
   },
   "Homepage": {
     "welcome": "Bun venit la Evolve Garage",
     "tagline": "Experții tăi locali de încredere din Leicester pentru toate reparațiile și serviciile auto."
+  },
+  "Footer": {
+    "tagline": "Experții tăi locali de încredere din Leicester.",
+    "servicesTitle": "Serviciile Noastre",
+    "servicing": "Service Auto",
+    "repairs": "Reparații Auto",
+    "mot": "MOT",
+    "companyTitle": "Companie",
+    "contact": "Contactați-ne",
+    "forum": "Forum",
+    "culture": "Cultura Noastră",
+    "supportTitle": "Suport",
+    "faq": "Întrebări Frecvente",
+    "feedback": "Spuneți-vă Părerea",
+    "chat": "Chat Live",
+    "copyright": "Drepturi de autor © {year} Evolve Garage",
+    "terms": "Termeni și Condiții",
+    "privacy": "Politică de Confidențialitate",
+    "sitemap": "Harta Site-ului"
   }
 }

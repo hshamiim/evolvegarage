@@ -4,8 +4,11 @@ import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import "../globals.css";
 
-// Import the Navbar component
 import Navbar from "../../components/Navbar";
+// import Footer from "@/components/Footer"; // Import the new Footer
+// If Footer.tsx exists in src/components, ensure the file is present.
+// Otherwise, update the path below to the correct location:
+import Footer from "../../components/Footer"; // Adjust path if needed
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,19 +31,13 @@ export default async function RootLayout({
       <body className={`${inter.className} bg-gray-100`}>
         <NextIntlClientProvider messages={messages}>
           <div className="flex flex-col min-h-screen">
-            
-            {/* --- Navbar is placed here --- */}
             <Navbar />
-            
-            {/* Page content will be rendered inside the <main> tag */}
             <main className="flex-grow">
               {children}
             </main>
             
-            {/* A simple footer at the bottom */}
-            <footer className="bg-gray-800 text-white p-4 text-center mt-auto">
-              <p>&copy; {new Date().getFullYear()} Evolve Garage. All Rights Reserved.</p>
-            </footer>
+            {/* Replace the old footer with the new one */}
+            <Footer />
 
           </div>
         </NextIntlClientProvider>
