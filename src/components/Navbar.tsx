@@ -9,11 +9,15 @@ import { Hub } from 'aws-amplify/utils';
 import { useTheme } from '../context/ThemeContext';
 
 // Define the NavItem component directly here for simplicity
-const NavItem = ({ href, text, hasDropdown = false, onClick }: { href: string; text: string; hasDropdown?: boolean; onClick?: () => void; }) => (
+const NavItem = ({ href, text, hasDropdown = false, onClick }: { href?: string; text: string; hasDropdown?: boolean; onClick?: () => void; }) => (
   <div onClick={onClick} className="flex items-center space-x-1 cursor-pointer py-2 border-b-2 border-transparent hover:border-red-600 transition-colors">
-    <Link href={href}>
+    {href ? (
+      <Link href={href}>
+        <span>{text}</span>
+      </Link>
+    ) : (
       <span>{text}</span>
-    </Link>
+    )}
     {hasDropdown && (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
         <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
@@ -117,11 +121,11 @@ export default function Navbar() {
           <div className="hidden md:flex">
              <ul className="flex items-center space-x-6">
                <li><NavItem href={`/${locale}`} text={t('home')} /></li>
-               <li><NavItem href={`/${locale}/servicing`} text={t('servicing')} hasDropdown onClick={() => handleDropdownToggle('servicing')} /></li>
-               <li><NavItem href={`/${locale}/repairs`} text={t('repairs')} hasDropdown onClick={() => handleDropdownToggle('repairs')} /></li>
-               <li><NavItem href={`/${locale}/mot`} text={t('mot')} hasDropdown onClick={() => handleDropdownToggle('mot')} /></li>
-               <li><NavItem href={`/${locale}/maintenance`} text={t('maintenance')} hasDropdown onClick={() => handleDropdownToggle('maintenance')} /></li>
-               <li><NavItem href={`/${locale}/faq`} text={t('faq')} hasDropdown onClick={() => handleDropdownToggle('faq')} /></li>
+               <li><NavItem text={t('servicing')} hasDropdown onClick={() => handleDropdownToggle('servicing')} /></li>
+               <li><NavItem text={t('repairs')} hasDropdown onClick={() => handleDropdownToggle('repairs')} /></li>
+               <li><NavItem text={t('mot')} hasDropdown onClick={() => handleDropdownToggle('mot')} /></li>
+               <li><NavItem text={t('maintenance')} hasDropdown onClick={() => handleDropdownToggle('maintenance')} /></li>
+               <li><NavItem text={t('faq')} hasDropdown onClick={() => handleDropdownToggle('faq')} /></li>
              </ul>
           </div>
 
@@ -168,13 +172,80 @@ export default function Navbar() {
           </div>
         </nav>
 
-        {['servicing', 'repairs', 'mot', 'maintenance', 'faq'].includes(openDropdown || '') && ( <div className="absolute left-0 w-full bg-white shadow-lg border-t border-gray-200" onClick={closeAllMenus}><div className="container mx-auto px-6 py-8">{openDropdown === 'servicing' && <div>Content for Car Servicing...</div>}{openDropdown === 'repairs' && <div>Content for Car Repairs...</div>}{openDropdown === 'mot' && <div>Content for MOT...</div>}{openDropdown === 'maintenance' && <div>Content for Maintenance...</div>}{openDropdown === 'faq' && <div>Content for FAQ...</div>}</div></div>)}
+        {/* Desktop dropdowns only */}
+        <div className="hidden md:block">
+          {['servicing', 'repairs', 'mot', 'maintenance', 'faq'].includes(openDropdown || '') && (
+            <div className="absolute left-0 w-full bg-white shadow-lg border-t border-gray-200" onClick={closeAllMenus}>
+              <div className="container mx-auto px-6 py-8">
+                {openDropdown === 'servicing' && <div>Content for Car Servicing...</div>}
+                {openDropdown === 'repairs' && <div>Content for Car Repairs...</div>}
+                {openDropdown === 'mot' && <div>Content for MOT...</div>}
+                {openDropdown === 'maintenance' && <div>Content for Maintenance...</div>}
+                {openDropdown === 'faq' && <div>Content for FAQ...</div>}
+              </div>
+            </div>
+          )}
+        </div>
 
         {/* --- Updated Mobile Dropdown Menu --- */}
         <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden pb-4`}>
           <ul className="flex flex-col items-start space-y-4 pl-4">
             <li><Link href={`/${locale}`} className="hover:text-red-600" onClick={closeAllMenus}>{t('home')}</Link></li>
-            {/* Add other main links here for mobile */}
+            <li>
+              <button className="hover:text-red-600 w-full text-left flex items-center justify-between" onClick={() => handleDropdownToggle('servicing')}>
+                <span>{t('servicing')}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 ml-2">
+                  <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                </svg>
+              </button>
+              {openDropdown === 'servicing' && (
+                <div className="bg-gray-50 border rounded mt-2 p-3 text-sm">Content for Car Servicing...</div>
+              )}
+            </li>
+            <li>
+              <button className="hover:text-red-600 w-full text-left flex items-center justify-between" onClick={() => handleDropdownToggle('repairs')}>
+                <span>{t('repairs')}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 ml-2">
+                  <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                </svg>
+              </button>
+              {openDropdown === 'repairs' && (
+                <div className="bg-gray-50 border rounded mt-2 p-3 text-sm">Content for Car Repairs...</div>
+              )}
+            </li>
+            <li>
+              <button className="hover:text-red-600 w-full text-left flex items-center justify-between" onClick={() => handleDropdownToggle('mot')}>
+                <span>{t('mot')}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 ml-2">
+                  <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                </svg>
+              </button>
+              {openDropdown === 'mot' && (
+                <div className="bg-gray-50 border rounded mt-2 p-3 text-sm">Content for MOT...</div>
+              )}
+            </li>
+            <li>
+              <button className="hover:text-red-600 w-full text-left flex items-center justify-between" onClick={() => handleDropdownToggle('maintenance')}>
+                <span>{t('maintenance')}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 ml-2">
+                  <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                </svg>
+              </button>
+              {openDropdown === 'maintenance' && (
+                <div className="bg-gray-50 border rounded mt-2 p-3 text-sm">Content for Maintenance...</div>
+              )}
+            </li>
+            <li>
+              <button className="hover:text-red-600 w-full text-left flex items-center justify-between" onClick={() => handleDropdownToggle('faq')}>
+                <span>{t('faq')}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 ml-2">
+                  <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                </svg>
+              </button>
+              {openDropdown === 'faq' && (
+                <div className="bg-gray-50 border rounded mt-2 p-3 text-sm">Content for FAQ...</div>
+              )}
+            </li>
             <li className="border-t w-full pt-4">
               {user ? (
                 <div className="flex flex-col items-start space-y-4">
