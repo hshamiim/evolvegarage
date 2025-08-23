@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import type { Review } from '../data/reviews';
 import StarRating from './StarRating';
 
@@ -14,7 +14,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [translatedText, setTranslatedText] = useState<string>(review.text);
   const [loading, setLoading] = useState(false);
-  const locale = typeof window !== 'undefined' ? (navigator.language.split('-')[0] || 'en') : 'en';
+  const locale = useLocale();
 
   // Fetch translation when locale changes or review changes
   React.useEffect(() => {
