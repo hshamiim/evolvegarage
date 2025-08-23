@@ -45,5 +45,26 @@
     "Reviews": {
     "title": "What do drivers say about our garage?",
     "subtitle": "We think we're great. They think that too 👀"
+  },
+  "HowItWorks": {
+    "kicker": "How It Works",
+    "title": "Booking Your Service is Easy",
+    "subtitle": "Get a transparent price and book your appointment in 3 simple steps.",
+    "step1_title": "Step 1",
+    "step1_heading": "Enter Your Car Registration",
+    "step1_text": "Tell us your vehicle's registration so we can find the exact parts and specs for your car.",
+    "step2_title": "Step 2",
+    "step2_heading": "Get an Instant, Transparent Quote",
+    "step2_text": "No hidden fees. See the exact price for the service or repair you need based on our fair pricing.",
+    "step3_title": "Step 3",
+    "step3_heading": "Book Your Service Online Instantly",
+    "step3_text": "Choose a date and time that works for you. We'll confirm your appointment right away."
+  },
+    "Newsletter": {
+    "title": "Stay in the know",
+    "text": "Get practical car care tips and the latest motoring news delivered to your inbox. Sign up to stay one step ahead on the road.",
+    "emailLabel": "Enter your email",
+    "emailPlaceholder": "Enter your email address",
+    "buttonText": "Subscribe"
   }
 }
