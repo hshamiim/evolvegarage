@@ -70,7 +70,10 @@
     "text": "Get practical car care tips and the latest motoring news delivered to your inbox. Sign up to stay one step ahead on the road.",
     "emailLabel": "Enter your email",
     "emailPlaceholder": "Enter your email address",
-    "buttonText": "Subscribe"
+    "buttonText": "Subscribe",
+    "subscribingText": "Subscribing...",
+    "successMessage": "Thank you for subscribing! You'll receive our latest updates.",
+    "errorMessage": "There was an error subscribing. Please try again."
   },
   "Auth": {
     "signInTitle": "Sign in to your account",

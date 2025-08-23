@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google"; // Temporarily disabled due to network issues
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import "../globals.css";
@@ -9,7 +9,7 @@ import Footer from "../../components/Footer";
 import { ThemeProvider } from "../../context/ThemeContext";
 import ConfigureAmplify from "../../components/ConfigureAmplify"; // --- 1. Import this component ---
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] }); // Temporarily disabled due to network issues
 
 export const metadata: Metadata = {
   title: "Evolve Garage - Leicester",
@@ -27,7 +27,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={`${inter.className} bg-gray-100`}>
+      <body className="bg-gray-100 font-sans"> {/* Using system font instead */}
         <ConfigureAmplify /> {/* --- 2. Add the component here --- */}
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
