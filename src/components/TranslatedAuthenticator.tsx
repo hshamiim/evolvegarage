@@ -69,7 +69,8 @@ function PostLoginRedirect() {
   return null;
 }
 
-export default function TranslatedAuthenticator() {
+// --- 1. Add the initialState prop to the function definition ---
+export default function TranslatedAuthenticator({ initialState = 'signIn' }: { initialState?: 'signIn' | 'signUp' }) {
   const t = useTranslations('Auth');
   const locale = useLocale();
 
@@ -110,10 +111,11 @@ export default function TranslatedAuthenticator() {
       `}</style>
 
       <Authenticator
+        // --- 2. Pass the prop down to the Authenticator component ---
+        initialState={initialState}
         formFields={{
           signIn: {
             username: { placeholder: t('emailPlaceholder') },
-            // Added placeholder for the sign-in password field
             password: { placeholder: t('passwordPlaceholder') },
           },
           signUp: {
@@ -121,12 +123,10 @@ export default function TranslatedAuthenticator() {
               placeholder: t('emailPlaceholder'),
               order: 1
             },
-            // Added placeholder for the sign-up password field
             password: {
               placeholder: t('passwordPlaceholder'),
               order: 2,
             },
-            // Added placeholder for the confirm password field
             confirm_password: {
               placeholder: t('confirmPasswordPlaceholder'),
               order: 3,

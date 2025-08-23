@@ -8,7 +8,12 @@
     "faq": "FAQ",
     "signUp": "Sign Up",
     "login": "Login",
-    "forum": "Forum"
+    "forum": "Forum",
+    "profile": "Profile",
+    "myBookings": "My Bookings",
+    "myVirtualGarage": "My Virtual Garage",
+    "settings": "Settings",
+    "signOut": "Sign Out"
   },
   "Homepage": {
     "welcome": "Welcome to Evolve Garage",
