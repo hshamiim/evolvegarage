@@ -38,5 +38,12 @@
     "subtitle": "Your Local Trusted Garage Specialising In Servicing & Repairs With High Quality Parts. Check prices instantly, read customer reviews, and book an appointment with us.",
     "regPlatePlaceholder": "ENTER REG PLATE",
     "getQuoteButton": "Get quotes >"
+  },
+  "FeaturedOn": {
+    "title": "FEATURED ON"
+  },
+    "Reviews": {
+    "title": "What do drivers say about our garage?",
+    "subtitle": "We think we're great. They think that too 👀"
   }
 }

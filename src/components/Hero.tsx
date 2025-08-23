@@ -19,7 +19,8 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full h-[60vh] text-white">
+    // Ensure this class is set to h-screen
+<section className="relative w-full h-[80vh] text-white">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -39,11 +40,8 @@ export default function Hero() {
         </p>
 
         <form onSubmit={handleGetQuote} className="flex flex-col items-center gap-4 w-full max-w-md">
-          
-          {/* --- UK Reg Plate Styled Input (Updated Styling) --- */}
           <div className="bg-yellow-400 flex items-center w-full max-w-sm rounded-md border-2 border-black overflow-hidden">
             <div className="bg-blue-600 h-full flex flex-col justify-center items-center px-3 self-stretch">
-              {/* GB text is now larger */}
               <span className="text-white font-bold text-sm">GB</span>
             </div>
             <input 
@@ -51,7 +49,6 @@ export default function Hero() {
               value={regPlate}
               onChange={(e) => setRegPlate(e.target.value)}
               placeholder={t('regPlatePlaceholder')}
-              // Input background is now transparent
               className="w-full bg-transparent text-black text-center text-2xl md:text-3xl font-bold uppercase tracking-wider placeholder-gray-800/70 focus:outline-none py-3"
             />
           </div>

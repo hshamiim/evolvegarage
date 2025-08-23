@@ -1,8 +1,13 @@
 import Hero from '../../components/Hero';
+import FeaturedOn from '../../components/FeaturedOn';
+import ReviewsSection from '../../components/ReviewsSection';
 
 export default function HomePage() {
-  // This page is now just a simple container that displays the Hero component.
   return (
-    <Hero />
+    <>
+      <Hero />
+      <FeaturedOn />
+      <ReviewsSection />
+    </>
   );
 }
