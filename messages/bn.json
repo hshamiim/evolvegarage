@@ -66,5 +66,23 @@
     "emailLabel": "আপনার ইমেল লিখুন",
     "emailPlaceholder": "আপনার ইমেল ঠিকানা লিখুন",
     "buttonText": "সাবস্ক্রাইব করুন"
-  }
+  },
+"Auth": {
+  "signInTitle": "আপনার অ্যাকাউন্টে সাইন ইন করুন",
+  "createAccountTitle": "নতুন অ্যাকাউন্ট তৈরি করুন",
+  "emailLabel": "ইমেল ঠিকানা",
+  "emailPlaceholder": "আপনার ইমেল ঠিকানা লিখুন",
+  "passwordLabel": "পাসওয়ার্ড",
+  "passwordPlaceholder": "আপনার পাসওয়ার্ড লিখুন",
+  "confirmPasswordPlaceholder": "আপনার পাসওয়ার্ড নিশ্চিত করুন",
+  "forgotPassword": "পাসওয়ার্ড ভুলে গেছেন?",
+  "signInButton": "সাইন ইন করুন",
+  "signUpButton": "অ্যাকাউন্ট তৈরি করুন",
+  "confirmSignUpTitle": "সাইন আপ নিশ্চিত করুন",
+  "confirmationCodeLabel": "নিশ্চিতকরণ কোড",
+  "confirmationCodePlaceholder": "আপনার কোড লিখুন",
+  "confirmButton": "নিশ্চিত করুন",
+  "haveAccount": "ইতিমধ্যে একটি অ্যাকাউন্ট আছে?",
+  "noAccount": "কোনো অ্যাকাউন্ট নেই?"
+}
 }

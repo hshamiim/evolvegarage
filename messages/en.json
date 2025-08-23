@@ -66,5 +66,23 @@
     "emailLabel": "Enter your email",
     "emailPlaceholder": "Enter your email address",
     "buttonText": "Subscribe"
+  },
+  "Auth": {
+    "signInTitle": "Sign in to your account",
+    "createAccountTitle": "Create a new account",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your email address",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "confirmPasswordPlaceholder": "Confirm your password",
+    "forgotPassword": "Forgot your password?",
+    "signInButton": "Sign in",
+    "signUpButton": "Create account",
+    "confirmSignUpTitle": "Confirm Sign Up",
+    "confirmationCodeLabel": "Confirmation Code",
+    "confirmationCodePlaceholder": "Enter your code",
+    "confirmButton": "Confirm",
+    "haveAccount": "Already have an account?",
+    "noAccount": "Don't have an account?"
   }
 }

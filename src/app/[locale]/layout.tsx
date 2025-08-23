@@ -6,7 +6,8 @@ import "../globals.css";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import { ThemeProvider } from "../../context/ThemeContext"; // Import the ThemeProvider
+import { ThemeProvider } from "../../context/ThemeContext";
+import ConfigureAmplify from "../../components/ConfigureAmplify"; // --- 1. Import this component ---
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,8 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={`${inter.className} bg-gray-100`}>
-        <ThemeProvider> {/* Wrap everything with the ThemeProvider */}
+        <ConfigureAmplify /> {/* --- 2. Add the component here --- */}
+        <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
             <div className="flex flex-col min-h-screen">
               <Navbar />
