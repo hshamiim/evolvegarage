@@ -1,4 +1,25 @@
 {
+  "Reviews": {
+    "title": "What do drivers say about our garage?",
+    "subtitle": "We think we're great. They think that too 👀",
+    "readMore": "Read More",
+    "readLess": "Read Less",
+    "Clutch Replacement": "Clutch Replacement",
+    "MOT & Full Service": "MOT & Full Service",
+    "generalRepairs": "General Repairs",
+    "sourceGoogle": "Review from Google Maps",
+    "reviewedText": "reviewed Evolve Garage"
+  },
+  "Newsletter": {
+    "title": "Stay in the know",
+    "text": "Get practical car care tips and the latest motoring news delivered to your inbox. Sign up to stay one step ahead on the road.",
+    "emailLabel": "Enter your email",
+    "emailPlaceholder": "Enter your email address",
+    "buttonText": "Subscribe",
+    "loadingText": "Subscribing...",
+    "successMessage": "Thank you for subscribing!",
+    "errorMessage": "Subscription failed. Please try again."
+  },
   "Navbar": {
     "home": "Home",
     "servicing": "Car Servicing",
@@ -47,10 +68,6 @@
   "FeaturedOn": {
     "title": "FEATURED ON"
   },
-    "Reviews": {
-    "title": "What do drivers say about our garage?",
-    "subtitle": "We think we're great. They think that too 👀"
-  },
   "HowItWorks": {
     "kicker": "How It Works",
     "title": "Booking Your Service is Easy",
@@ -65,21 +82,17 @@
     "step3_heading": "Book Your Service Online Instantly",
     "step3_text": "Choose a date and time that works for you. We'll confirm your appointment right away."
   },
-    "Newsletter": {
-    "title": "Stay in the know",
-    "text": "Get practical car care tips and the latest motoring news delivered to your inbox. Sign up to stay one step ahead on the road.",
-    "emailLabel": "Enter your email",
-    "emailPlaceholder": "Enter your email address",
-    "buttonText": "Subscribe"
-  },
   "Auth": {
-    "signInTitle": "Sign in to your account",
-    "createAccountTitle": "Create a new account",
-    "emailLabel": "Email Address",
-    "emailPlaceholder": "Enter your email address",
-    "passwordLabel": "Password",
-    "passwordPlaceholder": "Enter your password",
-    "confirmPasswordPlaceholder": "Confirm your password",
+  "signInTitle": "Sign in to your account",
+  "createAccountTitle": "Create a new account",
+  "usernameLabel": "Username",
+  "usernamePlaceholder": "Enter your username",
+  "emailLabel": "Email Address",
+  "emailPlaceholder": "Enter your email address",
+  "passwordLabel": "Password",
+  "passwordPlaceholder": "Enter your password",
+  "confirmPasswordLabel": "Confirm Password",
+  "confirmPasswordPlaceholder": "Confirm your password",
     "forgotPassword": "Forgot your password?",
     "signInButton": "Sign in",
     "signUpButton": "Create account",

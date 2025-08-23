@@ -7,16 +7,30 @@ export default function Newsletter() {
   const t = useTranslations('Newsletter');
   const [email, setEmail] = useState('');
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      alert(`Thank you for subscribing with ${email}!`);
-      setEmail('');
+    if (!email) return;
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok) {
+        setStatus('success');
+        setEmail('');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
     }
   };
 
   return (
-    <section className="bg-gray-50 py-20">
+  <section className="bg-gray-50 py-20">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 lg:flex lg:items-center lg:justify-between">
           
@@ -49,10 +63,17 @@ export default function Newsletter() {
                 type="submit"
                 // Changed from green to red to match the site theme
                 className="mt-3 w-full sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0 bg-red-600 hover:bg-red-700 border border-transparent rounded-md shadow-sm px-5 py-3 flex items-center justify-center text-base font-medium text-white"
+                disabled={status === 'loading'}
               >
-                {t('buttonText')}
+                {status === 'loading' ? t('loadingText') : t('buttonText')}
               </button>
             </form>
+            {status === 'success' && (
+              <p className="mt-2 text-green-600">{t('successMessage')}</p>
+            )}
+            {status === 'error' && (
+              <p className="mt-2 text-red-600">{t('errorMessage')}</p>
+            )}
           </div>
 
         </div>

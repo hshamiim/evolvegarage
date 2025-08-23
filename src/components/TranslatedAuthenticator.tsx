@@ -80,15 +80,20 @@ export default function TranslatedAuthenticator({ initialState = 'signIn' }: { i
       'Sign in': t('signInButton'),
       'Create Account': t('createAccountTitle'),
       'Create account': t('signUpButton'),
+      'Username': t('usernameLabel'),
+      'Enter your username': t('usernamePlaceholder'),
       'Email': t('emailLabel'),
+      'Enter your email': t('emailPlaceholder'),
       'Password': t('passwordLabel'),
+      'Enter your password': t('passwordPlaceholder'),
+      'Confirm Password': t('confirmPasswordLabel'),
+      'Confirm your password': t('confirmPasswordPlaceholder'),
       'Forgot your password?': t('forgotPassword'),
       'Confirm Sign Up': t('confirmSignUpTitle'),
       'Confirmation Code': t('confirmationCodeLabel'),
       'Enter your code': t('confirmationCodePlaceholder'),
       'Confirm': t('confirmButton'),
     };
-    
     I18n.putVocabulariesForLanguage(locale, translations);
   }, [locale, t]);
 
@@ -111,30 +116,45 @@ export default function TranslatedAuthenticator({ initialState = 'signIn' }: { i
       `}</style>
 
       <Authenticator
-        // --- 2. Pass the prop down to the Authenticator component ---
         initialState={initialState}
         formFields={{
           signIn: {
-            username: { placeholder: t('emailPlaceholder') },
-            password: { placeholder: t('passwordPlaceholder') },
-          },
-          signUp: {
-            email: {
+            username: {
+              label: t('emailLabel'),
               placeholder: t('emailPlaceholder'),
-              order: 1
             },
             password: {
+              label: t('passwordLabel'),
               placeholder: t('passwordPlaceholder'),
+            },
+          },
+          signUp: {
+            username: {
+              label: t('usernameLabel'),
+              placeholder: t('usernamePlaceholder'),
+              order: 1,
+              isRequired: true,
+            },
+            email: {
+              label: t('emailLabel'),
+              placeholder: t('emailPlaceholder'),
               order: 2,
             },
-            confirm_password: {
-              placeholder: t('confirmPasswordPlaceholder'),
+            password: {
+              label: t('passwordLabel'),
+              placeholder: t('passwordPlaceholder'),
               order: 3,
+            },
+            confirm_password: {
+              label: t('confirmPasswordLabel'),
+              placeholder: t('confirmPasswordPlaceholder'),
+              order: 4,
             },
           },
           confirmSignUp: {
             confirmation_code: {
-              placeholder: t('confirmationCodePlaceholder')
+              label: t('confirmationCodeLabel'),
+              placeholder: t('confirmationCodePlaceholder'),
             }
           }
         }}
