@@ -6,8 +6,21 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { getCurrentUser, signOut } from 'aws-amplify/auth';
 import { Hub } from 'aws-amplify/utils';
-import NavItem from './NavItem';
 import { useTheme } from '../context/ThemeContext';
+
+// Define the NavItem component directly here for simplicity
+const NavItem = ({ href, text, hasDropdown = false, onClick }: { href: string; text: string; hasDropdown?: boolean; onClick?: () => void; }) => (
+  <div onClick={onClick} className="flex items-center space-x-1 cursor-pointer py-2 border-b-2 border-transparent hover:border-red-600 transition-colors">
+    <Link href={href}>
+      <span>{text}</span>
+    </Link>
+    {hasDropdown && (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+        <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+      </svg>
+    )}
+  </div>
+);
 
 export default function Navbar() {
   const t = useTranslations('Navbar');
@@ -19,7 +32,7 @@ export default function Navbar() {
   const [user, setUser] = useState<any | null>(null);
 
   useEffect(() => {
-    // Function to check the current user
+    // Function to check the current user's authentication status
     const checkUser = async () => {
       try {
         const currentUser = await getCurrentUser();
@@ -29,10 +42,9 @@ export default function Navbar() {
       }
     };
 
-    // Check the user when the component mounts
     checkUser();
 
-    // Set up a listener for auth events (sign in, sign out)
+    // Listen for auth events (sign in, sign out) and update the state
     const hubListener = Hub.listen('auth', ({ payload }) => {
       switch (payload.event) {
         case 'signedIn':
@@ -44,7 +56,7 @@ export default function Navbar() {
       }
     });
 
-    // Cleanup the listener when the component unmounts
+    // Cleanup the listener when the component is unmounted
     return () => hubListener();
   }, []);
   // --- End of new auth logic ---
@@ -79,11 +91,11 @@ export default function Navbar() {
     signOut(); // This now calls the function imported from 'aws-amplify/auth'
     closeAllMenus();
   };
-
+  
   const getPathWithoutLocale = (path: string) => {
-    const pathLocale = path.split('/')[1];
-    if (languages.some(l => l.code === pathLocale)) {
-      return path.substring(path.indexOf('/', 1));
+    const pathParts = path.split('/');
+    if (languages.some(l => l.code === pathParts[1])) {
+        return `/${pathParts.slice(2).join('/')}`;
     }
     return path;
   };
@@ -105,24 +117,21 @@ export default function Navbar() {
           <div className="hidden md:flex">
              <ul className="flex items-center space-x-6">
                <li><NavItem href={`/${locale}`} text={t('home')} /></li>
-               <li><NavItem href="#" text={t('servicing')} hasDropdown onClick={() => handleDropdownToggle('servicing')} /></li>
-               <li><NavItem href="#" text={t('repairs')} hasDropdown onClick={() => handleDropdownToggle('repairs')} /></li>
-               <li><NavItem href="#" text={t('mot')} hasDropdown onClick={() => handleDropdownToggle('mot')} /></li>
-               <li><NavItem href="#" text={t('maintenance')} hasDropdown onClick={() => handleDropdownToggle('maintenance')} /></li>
-               <li><NavItem href="#" text={t('faq')} hasDropdown onClick={() => handleDropdownToggle('faq')} /></li>
+               <li><NavItem href={`/${locale}/servicing`} text={t('servicing')} hasDropdown onClick={() => handleDropdownToggle('servicing')} /></li>
+               <li><NavItem href={`/${locale}/repairs`} text={t('repairs')} hasDropdown onClick={() => handleDropdownToggle('repairs')} /></li>
+               <li><NavItem href={`/${locale}/mot`} text={t('mot')} hasDropdown onClick={() => handleDropdownToggle('mot')} /></li>
+               <li><NavItem href={`/${locale}/maintenance`} text={t('maintenance')} hasDropdown onClick={() => handleDropdownToggle('maintenance')} /></li>
+               <li><NavItem href={`/${locale}/faq`} text={t('faq')} hasDropdown onClick={() => handleDropdownToggle('faq')} /></li>
              </ul>
           </div>
 
           <div className="flex items-center space-x-2 md:space-x-4">
             
-            {/* The conditional rendering will now work based on our new user state */}
+            {/* This conditional rendering now works based on our new `user` state */}
             {user ? (
-              // If user is logged in, show Profile dropdown
               <div className="relative">
                 <button title={t('profile')} onClick={() => handleDropdownToggle('profile')} className="p-2 rounded-full hover:bg-gray-200 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                    <path fillRule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clipRule="evenodd" />
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path fillRule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clipRule="evenodd" /></svg>
                 </button>
                 {openDropdown === 'profile' && (
                   <div className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5">
@@ -135,14 +144,12 @@ export default function Navbar() {
                 )}
               </div>
             ) : (
-              // If user is logged out, show Login/Sign Up
               <div className="hidden md:flex items-center space-x-4">
                 <Link href={`/${locale}/login`} className="hover:text-red-600 transition-colors">{t('login')}</Link>
                 <Link href={`/${locale}/signup`} className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors">{t('signUp')}</Link>
               </div>
             )}
             
-            {/* Theme and Language buttons remain the same */}
             <div className="relative">
               <button title="Change theme" onClick={() => handleDropdownToggle('theme')}>🎨</button>
               {openDropdown === 'theme' && ( <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5"> {themes.map((themeItem) => ( <button key={themeItem.code} onClick={() => setTheme(themeItem.code)} className="w-full text-left flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><span>{themeItem.flag}</span><span>{themeItem.name}</span></button>))}</div>)}
@@ -167,18 +174,15 @@ export default function Navbar() {
         <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden pb-4`}>
           <ul className="flex flex-col items-start space-y-4 pl-4">
             <li><Link href={`/${locale}`} className="hover:text-red-600" onClick={closeAllMenus}>{t('home')}</Link></li>
-            <li><Link href={`/${locale}/servicing`} className="hover:text-red-600" onClick={closeAllMenus}>{t('servicing')}</Link></li>
             {/* Add other main links here for mobile */}
             <li className="border-t w-full pt-4">
               {user ? (
-                // If logged in, show profile links and sign out
                 <div className="flex flex-col items-start space-y-4">
                    <Link href={`/${locale}/bookings`} onClick={closeAllMenus} className="hover:text-red-600">{t('myBookings')}</Link>
                    <Link href={`/${locale}/garage`} onClick={closeAllMenus} className="hover:text-red-600">{t('myVirtualGarage')}</Link>
                    <button onClick={handleSignOut} className="w-full text-left text-red-600 hover:text-red-800">{t('signOut')}</button>
                 </div>
               ) : (
-                // If logged out, show login/signup
                 <div className="flex flex-col items-start space-y-4">
                   <Link href={`/${locale}/login`} className="hover:text-red-600" onClick={closeAllMenus}>{t('login')}</Link>
                   <Link href={`/${locale}/signup`} className="hover:text-red-600" onClick={closeAllMenus}>{t('signUp')}</Link>
