@@ -13,6 +13,7 @@ export async function POST(req: NextRequest) {
   try {
     const { text, targetLanguage } = await req.json();
     if (!text || !targetLanguage) {
+      console.error('Missing text or targetLanguage', { text, targetLanguage });
       return NextResponse.json({ error: 'Missing text or targetLanguage' }, { status: 400 });
     }
     const command = new TranslateTextCommand({
@@ -22,7 +23,14 @@ export async function POST(req: NextRequest) {
     });
     const response = await client.send(command);
     return NextResponse.json({ translatedText: response.TranslatedText });
-  } catch (error) {
-    return NextResponse.json({ error: 'Translation failed' }, { status: 500 });
+  } catch (error: any) {
+    console.error('Translate API error:', {
+      message: error?.message,
+      code: error?.code,
+      name: error?.name,
+      stack: error?.stack,
+      error
+    });
+    return NextResponse.json({ error: 'Translation failed', details: error?.message || error }, { status: 500 });
   }
 }
