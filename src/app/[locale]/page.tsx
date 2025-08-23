@@ -1,14 +1,8 @@
-// File: src/app/[locale]/page.tsx
+import Hero from '../../components/Hero';
 
-import {getTranslations} from 'next-intl/server';
-
-export default async function Home() {
-  const t = await getTranslations('Homepage');
-
+export default function HomePage() {
+  // This page is now just a simple container that displays the Hero component.
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
-      <h1 className="text-4xl font-bold">{t('welcome')}</h1>
-      <p className="mt-4 text-lg">{t('tagline')}</p>
-    </main>
+    <Hero />
   );
 }

@@ -32,5 +32,11 @@
     "terms": "Termeni și Condiții",
     "privacy": "Politică de Confidențialitate",
     "sitemap": "Harta Site-ului"
+  },
+  "Hero": {
+    "title": "Obțineți cele mai bune oferte la ITP, servicii auto și reparații",
+    "subtitle": "Garajul tău local de încredere, specializat în service și reparații cu piese de înaltă calitate. Verificați prețurile instantaneu, citiți recenziile clienților și programați o întâlnire cu noi.",
+    "regPlatePlaceholder": "INTRODUCEȚI NR. ÎNMATRICULARE",
+    "getQuoteButton": "Obține oferte >"
   }
 }
