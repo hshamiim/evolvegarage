@@ -119,7 +119,11 @@
     "diagnostics": "ডায়াগনস্টিকস",
     "clutchReplacement": "ক্লাচ প্রতিস্থাপন",
     "cambelt": "ক্যামবেল্ট এবং ওয়াটার পাম্প",
-    "fullServiceMot": "সম্পূর্ণ পরিষেবা এবং এমওটি"
-  ,"serviceRequired": "পরবর্তী ধাপে যেতে পরিষেবা নির্বাচন করুন।"
+    "fullServiceMot": "সম্পূর্ণ পরিষেবা এবং এমওটি",
+    "serviceRequired": "পরবর্তী ধাপে যেতে পরিষেবা নির্বাচন করুন।",
+    "slotFormat": "{date} | {startTime} - {endTime}",
+    "selectedSlot": "নির্বাচিত স্লট: {date} | {startTime} - {endTime}",
+    "greeting": "হ্যালো {username}, আবার আপনাকে দেখে ভালো লাগলো!",
+    "notYouSignOut": "আপনি নন? সাইন আউট করতে এখানে ক্লিক করুন"
   }
 }

@@ -1,0 +1,25 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-evolvegarage-dev-c0591-authRole",
+      "UnauthRoleArn": "arn:aws:iam::345594595740:role/amplify-evolvegarage-dev-c0591-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::345594595740:role/amplify-evolvegarage-dev-c0591-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-evolvegarage-dev-c0591-deployment",
+      "UnauthRoleName": "amplify-evolvegarage-dev-c0591-unauthRole",
+      "StackName": "amplify-evolvegarage-dev-c0591",
+      "StackId": "arn:aws:cloudformation:eu-central-1:345594595740:stack/amplify-evolvegarage-dev-c0591/db1d4560-812f-11f0-823a-0208ee417111",
+      "AmplifyAppId": "d3gqq5n97affgu"
+    },
+    "categories": {
+      "auth": {
+        "evolvegarage313ab4a1": {
+          "userPoolId": "eu-central-1_KmL36sAKk",
+          "userPoolName": "User pool - gmxi5x",
+          "webClientId": "2p0sjvnfdjgrl5tgoa8eq5uker",
+          "nativeClientId": "2p0sjvnfdjgrl5tgoa8eq5uker"
+        }
+      }
+    }
+  }
+}

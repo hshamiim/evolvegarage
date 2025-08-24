@@ -139,7 +139,13 @@
     "additionalInfoSupport": "Any extra information to support your quote?",
     "additionalWork": "Do you need additional work?",
     "additionalWorkSupport": "This will not form part of your initial quote but will be passed onto the garage.",
-    "confirmButton": "Confirm"
-  ,"serviceRequired": "Please select a service to continue."
+    "confirmButton": "Confirm",
+    "serviceRequired": "Please select a service to continue.",
+    "noSlotsFound": "No available slots found for the selected date.",
+  "slotFormat": "{date} | {startTime} - {endTime}",
+  "selectedSlot": "Selected slot: {date} | {startTime} - {endTime}",
+  "greeting": "Hi {username}, Great to see you again!",
+  "notYouSignOut": "Not you? Click here to sign out"
+
   }
 }

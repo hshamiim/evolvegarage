@@ -70,7 +70,7 @@ function PostLoginRedirect() {
 }
 
 // --- 1. Add the initialState prop to the function definition ---
-export default function TranslatedAuthenticator({ initialState = 'signIn' }: { initialState?: 'signIn' | 'signUp' }) {
+export default function TranslatedAuthenticator({ initialState = 'signIn', disableRedirect = false }: { initialState?: 'signIn' | 'signUp', disableRedirect?: boolean }) {
   const t = useTranslations('Auth');
   const locale = useLocale();
 
@@ -120,16 +120,19 @@ export default function TranslatedAuthenticator({ initialState = 'signIn' }: { i
         formFields={{
           signIn: {
             username: {
-              label: t('emailLabel'),
-              placeholder: t('emailPlaceholder'),
+              label: t('usernameLabel'),
+              placeholder: t('usernamePlaceholder'),
+              order: 1,
+              isRequired: true,
             },
             password: {
               label: t('passwordLabel'),
               placeholder: t('passwordPlaceholder'),
+              order: 2,
             },
           },
           signUp: {
-            username: {
+            preferred_username: {
               label: t('usernameLabel'),
               placeholder: t('usernamePlaceholder'),
               order: 1,
@@ -164,7 +167,7 @@ export default function TranslatedAuthenticator({ initialState = 'signIn' }: { i
           SignUp: { Footer: CustomSignUpFooter },
         }}
       >
-        <PostLoginRedirect />
+        {!disableRedirect && <PostLoginRedirect />}
       </Authenticator>
     </div>
   );

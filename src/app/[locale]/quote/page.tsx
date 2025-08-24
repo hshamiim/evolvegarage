@@ -8,6 +8,7 @@ import { QuoteFormProvider } from '../../../context/QuoteContext';
 import ProgressBar from '../../../components/quote/MuiProgressBar'; // Assuming you kept this
 import Step1_YourJob from '../../../components/quote/Step1_YourJob'; // We will create this next
 import Step2_Confirmation from '../../../components/quote/Step2_Confirmation';
+import Step3_Confirmation from '../../../components/quote/Step3_Confirmation';
 
 export default function QuotePage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -46,6 +47,8 @@ interface QuotePageInnerProps {
 
 function QuotePageInner({ currentStep, setCurrentStep, t, router, initialPlate, nextError, setNextError }: QuotePageInnerProps) {
   const { regPlate, selectedServices } = require('../../../context/QuoteContext').useQuoteForm();
+  // Simulate signed-in state for demo; replace with your auth logic
+  const isSignedIn = false;
 
   const handleNext = () => {
     if (!regPlate || regPlate.trim() === '') {
@@ -77,20 +80,20 @@ function QuotePageInner({ currentStep, setCurrentStep, t, router, initialPlate, 
               initialPlate={initialPlate}
             />
           )}
-          {currentStep === 2 && <Step2_Confirmation onBack={() => setCurrentStep(1)} />}
-
+          {currentStep === 2 && (
+            <Step2_Confirmation 
+              onBack={() => setCurrentStep(1)}
+              onNext={() => setCurrentStep(3)}
+            />
+          )}
+          {currentStep === 3 && (
+            <Step3_Confirmation
+              onBack={() => setCurrentStep(2)}
+              onConfirm={() => alert('Booking confirmed!')}
+              isSignedIn={isSignedIn}
+            />
+          )}
         </div>
-        {/* Navigation buttons removed for step 1. Confirm button for step 2 only. */}
-        {currentStep === 2 && (
-          <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 flex flex-row justify-end items-center py-6 pb-16">
-            <button 
-              onClick={() => alert('Confirmed!')} 
-              className="bg-green-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-600"
-            >
-              {t('confirmButton')}
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );
