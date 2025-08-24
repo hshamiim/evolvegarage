@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { TranslateClient, TranslateTextCommand } from '@aws-sdk/client-translate';
 
 const client = new TranslateClient({
-  region: process.env.APP_AWS_REGION,
+  region: process.env.AWS_REGION,
   credentials: {
-    accessKeyId: process.env.APP_AWS_ACCESS!,
-    secretAccessKey: process.env.APP_AWS_SECRET_ACCESS_KEY!,
+    accessKeyId: process.env.AWS_ACCESS!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
   },
 });
 

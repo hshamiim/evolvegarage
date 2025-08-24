@@ -2,10 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { DynamoDBClient, PutItemCommand } from '@aws-sdk/client-dynamodb';
 
 const client = new DynamoDBClient({
-  region: process.env.APP_AWS_REGION,
+  region: process.env.AWS_REGION,
   credentials: {
-    accessKeyId: process.env.APP_AWS_ACCESS!,
-    secretAccessKey: process.env.APP_AWS_SECRET_ACCESS_KEY!,
+    accessKeyId: process.env.AWS_ACCESS!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
   },
 });
 
