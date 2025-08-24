@@ -3,13 +3,17 @@ import { NextRequest, NextResponse } from 'next/server';
 import { TranslateClient, TranslateTextCommand } from '@aws-sdk/client-translate';
 
 const client = new TranslateClient({
-  region: process.env.AWS_REGION,
+  region: "eu-central-1", // Hardcoded region
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+    accessKeyId: "AKIAVA5YLBGOOS53VLNW", // Hardcoded access key
+    secretAccessKey: "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", // Hardcoded secret
   },
 });
-
+  console.log('AWS ENV DEBUG:', {
+    AWS_ACCESS: process.env.AWS_ACCESS,
+    AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
+    AWS_REGION: process.env.AWS_REGION
+  });
 export async function POST(req: NextRequest) {
   try {
     const { text, targetLanguage } = await req.json();
