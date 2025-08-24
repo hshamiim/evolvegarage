@@ -103,5 +103,22 @@
   "confirmButton": "নিশ্চিত করুন",
   "haveAccount": "ইতিমধ্যে একটি অ্যাকাউন্ট আছে?",
   "noAccount": "কোনো অ্যাকাউন্ট নেই?"
-}
+},
+"QuotePage": {
+    "progressStep1": "আপনার কাজ",
+    "progressStep2": "নিশ্চিতকরণ",
+    "progressStep3": "আপনার বিবরণ",
+    "mainTitle": "আপনার কী প্রয়োজন?",
+    "mainSubtitle": "কয়েক মিনিটের মধ্যে উদ্ধৃতি পান। ৩টি সহজ ধাপে আপনার কাজ পোস্ট করুন।",
+    "regPlateTitle": "আপনার গাড়ির রেজিস্ট্রেশন কী?",
+    "servicesTitle": "আপনি কি খুঁজছেন?",
+    "searchPlaceholder": "যেমন 'ইন্টারিম সার্ভিস'",
+    "viewAll": "সমস্ত বিভাগ দেখুন",
+    "mot": "এমওটি",
+    "fullService": "সম্পূর্ণ পরিষেবা",
+    "diagnostics": "ডায়াগনস্টিকস",
+    "clutchReplacement": "ক্লাচ প্রতিস্থাপন",
+    "cambelt": "ক্যামবেল্ট এবং ওয়াটার পাম্প",
+    "fullServiceMot": "সম্পূর্ণ পরিষেবা এবং এমওটি"
+  }
 }

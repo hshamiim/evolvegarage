@@ -1,15 +1,5 @@
+
 {
-  "Reviews": {
-    "title": "What do drivers say about our garage?",
-    "subtitle": "We think we're great. They think that too 👀",
-    "readMore": "Read More",
-    "readLess": "Read Less",
-    "Clutch Replacement": "Clutch Replacement",
-    "MOT & Full Service": "MOT & Full Service",
-    "generalRepairs": "General Repairs",
-    "sourceGoogle": "Review from Google Maps",
-    "reviewedText": "reviewed Evolve Garage"
-  },
   "Newsletter": {
     "title": "Stay in the know",
     "text": "Get practical car care tips and the latest motoring news delivered to your inbox. Sign up to stay one step ahead on the road.",
@@ -68,6 +58,17 @@
   "FeaturedOn": {
     "title": "FEATURED ON"
   },
+    "Reviews": {
+    "title": "What do drivers say about our garage?",
+    "subtitle": "We think we're great. They think that too 👀",
+    "readMore": "Read More",
+    "readLess": "Read Less",
+    "generalRepairs": "General Repairs",
+    "sourceGoogle": "Review from Google Maps",
+    "reviewedText": "reviewed Evolve Garage",
+    "Clutch Replacement": "Clutch Replacement",
+    "MOT & Full Service": "MOT & Full Service"
+  },
   "HowItWorks": {
     "kicker": "How It Works",
     "title": "Booking Your Service is Easy",
@@ -102,5 +103,34 @@
     "confirmButton": "Confirm",
     "haveAccount": "Already have an account?",
     "noAccount": "Don't have an account?"
+  },
+"QuotePage": {
+    "progressStep1": "Your Job",
+    "progressStep2": "Confirmation",
+    "progressStep3": "Your Details",
+    "mainTitle": "What do you need?",
+    "mainSubtitle": "Get quotes in seconds. Tell us what you need in 3 easy steps.",
+    "regPlateTitle": "What is your car registration?",
+    "regPlatePlaceholder":"YOUR REG PLATE",
+    "regPlateRequiredError": "This field is required",
+    "servicesTitle": "What are you looking for?",
+    "searchPlaceholder": "Try 'Mobile Mechanic'",
+    "viewAll": "View all categories",
+    "backButton": "Back",
+    "resetButton": "Reset form",
+    "nextButton": "Next",
+    "modalTitle": "All Categories",
+    "modalMostPopular": "Most popular",
+    "modalOther": "Other",
+    "mot": "MOT",
+    "fullService": "Full Service",
+    "diagnostics": "Diagnostics",
+    "brakeRepairs": "Brake Repairs",
+    "clutchRepairs": "Clutch Repairs",
+    "cambelt": "Cambelt and water pump",
+    "fullServiceMot": "Servicing and MOT",
+    "engineAndCooling": "Engine and Cooling",
+    "aircon": "Air-Con, Heating and Cooling"
+    
   }
 }
