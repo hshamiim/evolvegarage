@@ -1,3 +1,4 @@
+"use server";
 import { NextRequest, NextResponse } from 'next/server';
 import { TranslateClient, TranslateTextCommand } from '@aws-sdk/client-translate';
 
