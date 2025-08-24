@@ -109,7 +109,7 @@
     "progressStep2": "Confirmation",
     "progressStep3": "Your Details",
     "mainTitle": "What do you need?",
-    "mainSubtitle": "Get quotes in seconds. Tell us what you need in 3 easy steps.",
+    "mainSubtitle": "Get quotes in seconds. Post your job in 3 easy steps.",
     "regPlateTitle": "What is your car registration?",
     "regPlatePlaceholder":"YOUR REG PLATE",
     "regPlateRequiredError": "This field is required",
@@ -130,7 +130,16 @@
     "cambelt": "Cambelt and water pump",
     "fullServiceMot": "Servicing and MOT",
     "engineAndCooling": "Engine and Cooling",
-    "aircon": "Air-Con, Heating and Cooling"
-    
+    "aircon": "Air-Con, Heating and Cooling",
+    "confirmationTitle": "Is that everything?",
+    "confirmationSubtitle": "Add any extra information that mechanics should know",
+    "quoteOverview": "Quote overview",
+    "selectDifferentJob": "Select different job",
+    "additionalInfo": "Additional information and others",
+    "additionalInfoSupport": "Any extra information to support your quote?",
+    "additionalWork": "Do you need additional work?",
+    "additionalWorkSupport": "This will not form part of your initial quote but will be passed onto the garage.",
+    "confirmButton": "Confirm"
+  ,"serviceRequired": "Please select a service to continue."
   }
 }
