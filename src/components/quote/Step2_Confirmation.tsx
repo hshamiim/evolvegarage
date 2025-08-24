@@ -2,6 +2,9 @@
 
 import { useTranslations } from 'next-intl';
 import { useQuoteForm } from '../../context/QuoteContext';
+import { useEffect, useState } from 'react';
+import { generateClient } from 'aws-amplify/data';
+import type { Schema } from 'amplify/data/resource';
 import { services } from '../../data/services';
 import TextareaAutosize from 'react-textarea-autosize';
 
@@ -10,15 +13,40 @@ interface Step2Props {
 }
 
 export default function Step2_Confirmation({ onBack }: Step2Props) {
+
   const t = useTranslations('QuotePage');
-  const { 
-    carDetails, 
-    selectedServices, 
+  const {
+    carDetails,
+    selectedServices,
     setSelectedServices,
-    additionalInfo, 
+    additionalInfo,
     setAdditionalInfo,
-    setRegPlate 
+    setRegPlate,
+    selectedSlot,
+    setSelectedSlot,
   } = useQuoteForm();
+
+  const [bookingSlots, setBookingSlots] = useState<Array<any>>([]);
+  const [loadingSlots, setLoadingSlots] = useState<boolean>(true);
+  const client = generateClient<Schema>();
+
+  useEffect(() => {
+    const fetchSlots = async () => {
+      setLoadingSlots(true);
+      try {
+        const { data } = await client.models.BookingSlot.list({
+          filter: {
+            isAvailable: { eq: true },
+          },
+        });
+        setBookingSlots(data);
+      } catch (error) {
+        console.error('Error fetching booking slots:', error);
+      }
+      setLoadingSlots(false);
+    };
+    fetchSlots();
+  }, []);
 
   // Find the full service objects based on the selected IDs from Step 1
   const selectedServiceDetails = services.filter(service => 
@@ -77,6 +105,34 @@ export default function Step2_Confirmation({ onBack }: Step2Props) {
                 </button>
               </div>
             </div>
+          )}
+        </div>
+      </div>
+
+      {/* Booking Slot Selection Card */}
+      <div className="bg-gray-50 p-6 rounded-lg border">
+        <h2 className="text-lg font-semibold text-gray-800">{t('selectBookingSlot')}</h2>
+        <div className="mt-4">
+          {loadingSlots ? (
+            <div>{t('loadingSlots')}</div>
+          ) : bookingSlots.length === 0 ? (
+            <div>{t('noSlotsFound')}</div>
+          ) : (
+            <ul className="space-y-2">
+              {bookingSlots.map((slot: any) => (
+                <li key={slot.id}>
+                  <button
+                    className={`w-full text-left p-2 rounded border ${selectedSlot?.id === slot.id ? 'bg-blue-100 border-blue-500' : 'bg-white border-gray-300'} hover:bg-blue-50`}
+                    onClick={() => setSelectedSlot(slot)}
+                  >
+                    {t('slotFormat', { date: slot.date, startTime: slot.startTime, endTime: slot.endTime })}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+          {selectedSlot && (
+            <div className="mt-4 text-green-600">{t('selectedSlot', { date: selectedSlot.date, startTime: selectedSlot.startTime, endTime: selectedSlot.endTime })}</div>
           )}
         </div>
       </div>

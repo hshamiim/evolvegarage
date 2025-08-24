@@ -12,6 +12,8 @@ type QuoteFormData = {
   setSelectedServices: (services: string[]) => void;
   additionalInfo: string;
   setAdditionalInfo: (info: string) => void;
+  selectedSlot: any;
+  setSelectedSlot: (slot: any) => void;
 };
 
 // Create the context
@@ -23,13 +25,15 @@ export function QuoteFormProvider({ children }: { children: ReactNode }) {
   const [carDetails, setCarDetails] = useState<{make: string, model: string, details: string} | null>(null);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [additionalInfo, setAdditionalInfo] = useState('');
+  const [selectedSlot, setSelectedSlot] = useState<any>(null);
 
   return (
     <QuoteFormContext.Provider value={{ 
       regPlate, setRegPlate, 
       carDetails, setCarDetails,
       selectedServices, setSelectedServices,
-      additionalInfo, setAdditionalInfo
+      additionalInfo, setAdditionalInfo,
+      selectedSlot, setSelectedSlot
     }}>
       {children}
     </QuoteFormContext.Provider>

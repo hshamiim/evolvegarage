@@ -12,6 +12,19 @@ const schema = a.schema({
       content: a.string(),
     })
     .authorization((allow) => [allow.guest()]),
+
+  BookingSlot: a
+    .model({
+      date: a.string(), // ISO date string (e.g., "2025-08-24")
+      startTime: a.string(), // e.g., "09:00"
+      endTime: a.string(),   // e.g., "10:00"
+      isAvailable: a.boolean(),
+      bookedBy: a.string(), // user id or name, optional
+    })
+    .authorization((allow) => [
+      allow.guest().to(['read']),
+      allow.authenticated().to(['create', 'read', 'update']),
+    ]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
