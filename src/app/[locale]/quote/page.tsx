@@ -9,6 +9,7 @@ import ProgressBar from '../../../components/quote/MuiProgressBar'; // Assuming 
 import Step1_YourJob from '../../../components/quote/Step1_YourJob'; // We will create this next
 import Step2_Confirmation from '../../../components/quote/Step2_Confirmation';
 import Step3_Confirmation from '../../../components/quote/Step3_Confirmation';
+import Step4_Quote from '../../../components/quote/Step4_Quote';
 
 export default function QuotePage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -89,9 +90,12 @@ function QuotePageInner({ currentStep, setCurrentStep, t, router, initialPlate, 
           {currentStep === 3 && (
             <Step3_Confirmation
               onBack={() => setCurrentStep(2)}
-              onConfirm={() => alert('Booking confirmed!')}
+              onConfirm={() => setCurrentStep(4)}
               isSignedIn={isSignedIn}
             />
+          )}
+          {currentStep === 4 && (
+            <Step4_Quote onBack={() => setCurrentStep(3)} />
           )}
         </div>
       </div>
