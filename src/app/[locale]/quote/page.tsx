@@ -16,7 +16,7 @@ export default function QuotePage() {
   const router = useRouter();
   // Parse registration plate from query param using Next.js useSearchParams
   const searchParams = useSearchParams();
-  const initialPlate = searchParams.get('plate') || '';
+  const initialPlate = searchParams?.get('plate') || '';
 
   const [nextError, setNextError] = useState('');
 

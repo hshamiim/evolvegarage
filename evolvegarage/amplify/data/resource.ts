@@ -1,5 +1,4 @@
 import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
-import { truncate } from 'fs';
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -13,39 +12,6 @@ const schema = a.schema({
       content: a.string(),
     })
     .authorization((allow) => [allow.guest()]),
-
-  BookingSlot: a
-    .model({
-      date: a.string(), // ISO date string (e.g., "2025-08-24")
-      startTime: a.string(), // e.g., "09:00"
-      endTime: a.string(),   // e.g., "10:00"
-      isAvailable: a.boolean(),
-      bookedBy: a.string(), // user id or name, optional
-    })
-    .authorization((allow) => [
-      allow.guest().to(['read']),
-      allow.authenticated().to(['create', 'read', 'update']),
-    ]),
-
-Booking: a
-  .model({
-    registrationPlate: a.string(),
-    service: a.string(),
-    date: a.string(),
-    startTime: a.string(), // <-- add this
-    endTime: a.string(),   // <-- add this
-    notes: a.string(),
-    userId: a.string(),
-    quote: a.string(),
-    confirmed: a.boolean(),
-    finished: a.boolean(),
-    cancelled: a.boolean(),
-  })
-    .authorization(allow => [
-      allow.owner().to(['create', 'read', 'update', 'delete']),
-      allow.authenticated().to(['create']),
-      allow.group('admin').to(['read', 'update', 'delete']),
-    ]),
 });
 
 export type Schema = ClientSchema<typeof schema>;

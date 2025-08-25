@@ -1,15 +1,25 @@
+
 import { useTranslations } from 'next-intl';
 import { useQuoteForm } from '../../context/QuoteContext';
 import { services } from '../../data/services';
+import { generateClient } from 'aws-amplify/data';
+import type { Schema } from 'amplify/data/resource';
+import React from 'react';
 
 interface Step4Props {
   onBack: () => void;
+  userId?: string | null;
 }
+export default function Step4_Quote({ onBack, userId }: Step4Props) {
 
-export default function Step4_Quote({ onBack }: Step4Props) {
   const t = useTranslations('QuotePage');
-  const { carDetails, selectedServices, selectedSlot, additionalInfo } = useQuoteForm();
+  const { carDetails, selectedServices, selectedSlot, additionalInfo, regPlate } = useQuoteForm();
   const selectedServiceDetails = services.filter(service => selectedServices.includes(service.id));
+  const client = generateClient<Schema>();
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
+  const [success, setSuccess] = React.useState(false);
+  // Get userId from props
 
   // Placeholder price
   const quotePrice = '£99.00';
@@ -24,6 +34,28 @@ export default function Step4_Quote({ onBack }: Step4Props) {
   }
 
   const mapSrc = `https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Evolve%20Garage%2C%20Gwendolen%20Road%2C%20Leicester%2C%20UK&zoom=15&maptype=roadmap&language=${locale}`;
+
+  const handleConfirm = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      await client.models.Booking.create({
+        registrationPlate: regPlate,
+        service: selectedServiceDetails.map(s => s.nameKey).join(', '),
+        date: selectedSlot?.date || '',
+        notes: additionalInfo || '',
+userId: userId || '',        quote: quotePrice,
+        confirmed: true,
+        finished: false,
+        cancelled: false,
+      });
+      setSuccess(true);
+    } catch (err: any) {
+      setError(err.message || 'Failed to create booking');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="mt-12 space-y-8">
@@ -80,16 +112,24 @@ export default function Step4_Quote({ onBack }: Step4Props) {
         <button
           className="px-6 py-2 rounded border border-gray-300 bg-white text-gray-700 font-semibold hover:bg-gray-100"
           onClick={onBack}
+          disabled={loading}
         >
           {t('back')}
         </button>
         <button
           className="px-6 py-2 rounded bg-red-500 text-white font-semibold hover:bg-red-600"
-          onClick={() => alert('Booking confirmed!')}
+          onClick={handleConfirm}
+          disabled={loading}
         >
-          {t('confirmBooking')}
+          {loading ? t('confirming') : t('confirmBooking')}
         </button>
       </div>
+      {error && (
+        <div className="text-red-600 font-semibold text-center mt-4">{error}</div>
+      )}
+      {success && (
+        <div className="text-green-600 font-semibold text-center mt-4">{t('bookingSuccess') || 'Booking confirmed!'}</div>
+      )}
     </div>
   );
 }

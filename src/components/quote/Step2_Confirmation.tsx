@@ -53,14 +53,29 @@ export default function Step2_Confirmation({ onBack, onNext }: Step2Props) {
     const fetchSlots = async () => {
       setLoadingSlots(true);
       try {
-        const { data } = await client.models.BookingSlot.list({
+        // Fetch booking slots for the selected date
+        const { data: slotData } = await client.models.BookingSlot.list({
           filter: {
             date: { eq: selectedDate.locale(locale === 'bn' ? 'bn' : 'en').format('YYYY-MM-DD') },
           },
         });
-        setBookingSlots(data);
+        setBookingSlots(slotData);
+
+        // Fetch bookings for the selected date
+        const { data: bookings } = await client.models.Booking.list({
+          filter: {
+            date: { eq: selectedDate.locale(locale === 'bn' ? 'bn' : 'en').format('YYYY-MM-DD') },
+          },
+        });
+
+        // Store booked slots in state for filtering
+setBookedSlots(bookings.map(b => ({
+  startTime: b.startTime ?? '',
+  endTime: b.endTime ?? '',
+  date: b.date ?? '',
+})));
       } catch (error) {
-        console.error('Error fetching booking slots:', error);
+        console.error('Error fetching booking slots or bookings:', error);
       }
       setLoadingSlots(false);
     };
@@ -124,9 +139,12 @@ export default function Step2_Confirmation({ onBack, onNext }: Step2Props) {
   // Generate all possible slots for the selected date
   const allSlots = generateSlots(selectedDate.toDate(), serviceDuration);
 
-  // Filter out booked slots
+  // State to store booked slots
+  const [bookedSlots, setBookedSlots] = useState<Array<{ startTime: string; endTime: string; date: string }>>([]);
+
+  // Filter out slots that are already booked
   const availableSlots = allSlots.filter(slot => {
-    return !bookingSlots.some(
+    return !bookedSlots.some(
       booked =>
         booked.date === slot.date &&
         booked.startTime === slot.startTime &&

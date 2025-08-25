@@ -25,6 +25,7 @@ export default function Step3_Confirmation({ onBack, onConfirm, isSignedIn }: St
   const [currentUsername, setCurrentUsername] = useState<string | null>(null);
   const [showQuote, setShowQuote] = useState(false);
   const [sessionActive, setSessionActive] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
   useEffect(() => {
     (async () => {
       try {
@@ -33,7 +34,8 @@ export default function Step3_Confirmation({ onBack, onConfirm, isSignedIn }: St
         console.log("access token", session.tokens?.accessToken);
         setSessionActive(!!session.tokens?.idToken);
         const attributes = await fetchUserAttributes();
-        setCurrentUsername(attributes?.preferred_username || attributes?.username || attributes?.sub || null);
+  setCurrentUsername(attributes?.preferred_username || attributes?.username || attributes?.sub || null);
+  setUserId(attributes?.sub || null);
       } catch {
         setCurrentUsername(null);
         setSessionActive(false);
@@ -55,7 +57,7 @@ export default function Step3_Confirmation({ onBack, onConfirm, isSignedIn }: St
   const selectedServiceDetails = services.filter(service => selectedServices.includes(service.id));
 
   if (showQuote) {
-    return <Step4_Quote onBack={() => setShowQuote(false)} />;
+    return <Step4_Quote onBack={() => setShowQuote(false)} userId={userId} />;
   }
 
   return (
